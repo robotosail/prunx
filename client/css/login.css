@@ -1,0 +1,146 @@
+.login-box{
+  max-width:700px;
+  margin:150px auto;
+  color:blue;
+}
+
+.login-left{
+  background-color: rgba(211, 211,211,0.5);
+  padding:30px;
+  margin:10px;
+  float:left;
+  position:absolute;
+  top:30%;
+  
+}
+
+.login-right{
+  background: #111;
+  color:white;
+  padding:30px;
+  margin:20px;
+  right:20px;
+  float:right;
+}
+
+.form-control{
+  background-color:transparent;
+  border:2px solid lightblue;
+  padding:5px;
+  color:blue;
+}
+
+#notice{
+  position:absolute;
+  width:40%;
+  top:10%;
+  padding:10px;
+  right:30%;
+}
+
+.alert-message{
+  font-size:20px;
+  padding:10px;
+  align-items:center;
+  background-color:rgba(0, 0, 600, 0.7);
+  border-radius:5px;
+}
+
+.alert-info{
+  font-size:20px;
+  padding:10px;
+  align-items:center;
+  background-color:rgba(0, 0, 0, 0.3);
+  border-radius:5px;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#login-info{
+  font-size:30px;
+  color:blue;
+  font-weight:bold;
+  align-items:center;
+  position:absolute;
+  top :10%;
+  left :35%;
+}
+
+
+#profile-container{
+display:none;
+
+}
+
+#profileimg-circle{
+position:absolute;
+background-color:lightgrey;
+width:25%;
+height:30%;
+border-radius:50%;
+top:5%;
+left:2%;
+border:2px solid black;
+}
+
+#profile-img{
+position:absolute;
+width:300px;
+height:300px;
+top:-5%;
+left:-30%;
+}
+
+#stats_container{
+  position:absolute;
+  width:80%;
+  height:90%;
+ background-color:darkgrey;
+ top:5%;
+ left:10%;
+ border-radius:5%;
+}
+
+#level-bar{
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  position:absolute;
+  top:15%;
+  left:30%;
+  width:60%;
+  height:30px;
+  border-radius:25%;
+}
+
+#logoutbtn{
+ position:absolute;
+ background-color:blue;
+ font-size:20px;
+ top:90%;
+ left:90%;
+ width:10%;
+border-radius:5px;
+}

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="3d multiplayer game, made by robotosail, you can play with your firends any time a ny where"
+    />
+    <meta
+      name="keywords"
+      content="prunx.io, prunx-io, best games, pro.io, free shooter multiplayer games, probot.c1.biz, robotosail, robotosail r, Robotosail, Robotosail R, three.js practice, 3d multiplater"
+    />
+    <meta name="author" content="robotosail" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="prunx.io | multiplayer games" />
+    <meta property="og:site_name" content="prunx.io" />
+    <meta property="og:image:type" content="image/jpg" />
+    <meta property="og:image" content="http://r13q8.sse.codesandbox.io/image/target.jpg" />
+    <link rel="icon" href="image/target.jpg" />
+    <title>prunx.io | 3d multiplater</title>
+    <link rel="stylesheet" href="css/three.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <script src="library/three.min.js"></script>
+    <script src="library/PointerLockControls.js"></script>
+    <script src="library/OrbitControls.js"></script>
+    <script src="library/TrackballControls.js"></script>
+    <script src="library/stats.min.js"></script>
+    <script src="library/GLTFLoader.js"></script>
+    <script src="library/OBJLoader.js"></script>
+    <script src="library/MTLLoader.js"></script>
+  </head>
+  <body>
+    <script type="text/php">
+      // includding the errors-->
+       <?php
+        include("errors/error5.php");
+            ?>
+    </script>
+    <!--only used for debugging <div id="c"></div>-->
+    <div id="countdown">
+      4 : 00
+    </div>
+    <img id="clockimage" src="image/clock.jpg" />
+
+    <!-- the scope-->
+    <img src="image/scope.jpg" id="scope" />
+
+    <audio id="mic"></audio>
+
+    <!-- the crosshair-->
+    <div id="crosshair">
+      <div id="top"></div>
+      <div id="left"></div>
+      <div id="bottom"></div>
+      <div id="right"></div>
+    </div>
+    <div id="button">
+      <!-- the logo-->
+      <img id="logo" src="image/logo.jpg" />
+      <!--the text that activates the pointer lock controls-->
+      <div id="text">Click To Play</div>
+      <div id="text2">
+        use W,A,S,D to move and space to jump. To move around use the mouse, and
+        click to shoot, right to scope and r to reload
+      </div>
+    </div>
+
+    <!--the break timer-->
+    <div id="breaktimer">0:20</div>
+
+    <!-- gun reload-->
+    <div id="reload">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <video id="webcam"></video>
+    <section id="Ui">
+      <!-- the settings section -->
+      <div id="setting">
+        <div id="word1">Settings</div>
+        <img
+          id="settings-image"
+          src="image/settings.jpg"
+          alt="settings image"
+        />
+      </div>
+
+      <!-- the profile-->
+      <div id="profile">
+        <div id="word2">profile</div>
+        <img id="profile-image" src="image/profile.jpg" alt="profile image" />
+      </div>
+    </section>
+    <br />
+    <section id="display1">
+      <h3 id="cutcon">Customize Controls</h3>
+      <div id="category-1">General setting</div>
+
+      <div id="category-12">Game setting</div>
+      <img onclick="xout()" class="x" src="image/x.jpg" />
+      <div id="ui-display1">
+        <!-- the fov settings-->
+        <div id="fov">field of view</div>
+        <span id="rangeValue">4</span>
+        <input
+          type="range"
+          id="range"
+          value="4"
+          min="1"
+          max="120"
+          onChange="rangeval(this.value)"
+        />
+
+        <!-- the resolution-->
+        <div id="resolution">resolution</div>
+        <span id="resValue">1</span>
+        <input
+          type="range"
+          id="res"
+          value="1"
+          min="0.1"
+          max="9"
+          onmousemove="res(this.value)"
+          onChange="res(this.value)"
+        />
+
+        <!-- when click toggles the fps -->
+        <div id="togglefps">Toggle the fps</div>
+        <input
+          type="checkbox"
+          onChange="showfps(this.checked)"
+          name="checkbox"
+          id="checkbox"
+          checked
+        />
+
+        <!-- the movement x -->
+
+        <div id="mouse-x-pos">Mouse X</div>
+        <span id="mouseValue">1</span>
+        <input type="range" id="mouse-x" value="0.02" min="0.001" max="20" />
+
+        <div id="category-2">UI setting</div>
+        <!-- the ui color-->
+        <div id="color-text">UI Color</div>
+        <input type="color" id="ui-color" name="favcolor" value="#f0f0f0" />
+
+        <div id="size-text2">Ui size</div>
+        <span id="uiValue">56</span>
+        <input
+          type="range"
+          id="UIsize"
+          value="56"
+          min="45"
+          max="70"
+          onmousemove="uisize(this.value)"
+          onchange="uisize(this.value)"
+        />
+
+        <!--the crosshair color-->
+        <div id="category-3">Crosshair</div>
+
+        <div id="changecross">Crosshair Color</div>
+        <input id="cross-color" type="color" name="favcolor" value="#f0f0f0" />
+
+        <!--- the crosshair size-->
+        <div id="size-text">crosshair size</div>
+        <span id="crValue">3</span>
+        <input
+          type="range"
+          id="crosssize"
+          value="3"
+          min="1"
+          max="10"
+          onmousemove="crosssize(this.value)"
+          onchange="crosssize(this.value)"
+        />
+      </div>
+
+      <div id="category-4">Scope</div>
+      <div id="url-text">scope url</div>
+      <input
+        type="url"
+        id="scope-url"
+        placeholder="put your scope url here"
+        oninput="customscope()"
+      />
+    </section>
+
+    <!-- the profile display-->
+    <section id="display2">
+      <img onclick="xout()" class="x" src="image/x.jpg" />
+
+      <!--the profile creation begins-->
+      <div id="profile-container">
+        <!--the circle that contains the img of the profile-->
+        <div id="stats_container">
+          <progress id="level-bar" max="100" min="1" value="10"></progress>
+        </div>
+
+        <div id="profileimg-circle">
+          <img id="profile-img" src="image/akclass.jpg" />
+        </div>
+
+        <!--the logout button-->
+        <a href="php/logout.php"
+          ><button name="logout" id="logoutbtn">Logout</button></a
+        >
+      </div>
+
+      <div id="ui-display2">
+        <!-- includding the errors-->
+        <div id="login-info">
+          <script type="text/php">
+                 <?php
+            include("errors/error5.php");
+            ?>
+          </script>
+        </div>
+        <h2 id="notice" class="alert-message">
+          You have to login or sign up to view profile
+        </h2>
+        <!--the login / sign up form-->
+        <div class="container">
+          <div class="login-box">
+            <div class="row">
+              <div class="login-left">
+                <h2 class="alert-info">Login Here</h2>
+                <br />
+                <form
+                  action="php/validation.php"
+                  method="post"
+                  autocomplete="off"
+                >
+                  <div class="form-group">
+                    <script type="text/php">
+                           <?php
+                      include("errors/error.php");
+                      ?>
+                    </script>
+
+                    <label> username</label>
+                    <br />
+                    <input
+                      type="text"
+                      name="user"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label> password</label>
+                    <br />
+                    <inpu type="password" name="password" class="form-control" required/>
+                  </div>
+                  <br />
+                  <button type="submit" class="btn btn-primary" name="login">
+                    login
+                  </button>
+                </form>
+              </div>
+
+              <br />
+              <div class="login-right">
+                <h2 class="alert-info">Register Here</h2>
+                <br />
+                <form action="php/register.php" method="post" autocomplete="off">
+                  <div class="form-group">
+                    <script type="text/php">
+                      //<!-- includding the errors-->
+                      <?php
+                      include("errors/error2.php");
+                        ?>
+                              <?php
+                      include("errors/error3.php");
+                          ?>
+
+                             // <!--this happens when there is no error-->
+                              <?php
+                      include("errors/error4.php");
+                          ?>
+                    </script>
+                    <label> username</label>
+                    <br />
+                    <input
+                      type="text"
+                      name="user"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label> password</label>
+                    <br />
+                    <input
+                      type="password"
+                      name="password"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <br />
+                  <button type="submit" class="btn btn-primary" name="sign_up">
+                    sign up
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- the controls panel -->
+    <section id="controlspanel">
+      <img onclick="xout()" src="image/x.jpg" class="x" />
+      <h3 id="set">General settings</h3>
+      <div id="controls">
+
+        <h2 id="text4">Customize Controls</h2>
+        <button id="k-1" class="btn">Forward :</button>
+        <span id="kp-1">w</span>
+        <br />
+        <button id="k-2" class="btn">Back :</button>
+        <span id="kp-2">s</span>
+        <br />
+        <button id="k-3" class="btn">Left :</button>
+        <span id="kp-3">a</span>
+        <br />
+        <button id="k-4" class="btn">Right :</button>
+        <span id="kp-4">d</span>
+        <br />
+        <button id="k-5" class="btn">Jump :</button>
+        <span id="kp-5">space</span>
+        <button id="k-6" class="btn">Crouch :</button>
+        <span id="kp-6">shift</span>
+        <br />
+      </div>
+    </section>
+
+    <!-- the customize button-->
+    <!-- to dislplay the weapon -->
+    <div id="weapon-button"><h3 id="weapon-text">Customize</h3></div>
+    <section id="weapon-display">
+      <div id="weapon-ui">
+        <img onclick="xout()" src="image/x.jpg" class="x" />
+        <div class="text3">
+          Sniper rifle <img id="sniperclass" src="image/sniperclass.jpg" />
+          <button id="sniper" class="buton">Select</button>
+        </div>
+        <div class="text3">
+          assault rifle <img id="akclass" src="image/akclass.jpg" />
+          <button id="ak" class="buton">Select</button>
+        </div>
+        <div class="text3">
+          Semi Sniper <img id="semiclass" src="image/semiclass.jpg" />
+          <button id="semi" class="buton">Select</button>
+        </div>
+        <div class="text3">
+          rocket Launcher
+          <img id="rocketclass" src="image/rocketclass.jpg" /><button
+            id="rocket"
+            class="buton"
+          >
+            Select
+          </button>
+        </div>
+        <div class="text3">
+          shot gun <img id="shotgunclass" src="image/shotgunclass.jpg" /><button
+            id="shotgun"
+            class="buton"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="chat" title="chat">
+      <div id="message-Area"></div>
+      <form id="mesaage-form">
+        <input
+          id="inputmessage"
+          placeholder="press enter to start chatting"
+          autocomplete="off"
+        />
+        <img src="image/mic.jpg" id="mic-icon" />
+      </form>
+    </section>
+    <div id="hp-bar">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="ammo">
+      <div>30/30</div>
+    </div>
+    <img id="ammo-icon" src="image/ammo.jpg" />
+
+    <!--The update button the tells play updates-->
+    <button id="version-btn">v1.0.8</button>
+
+    <!-- different servers -->
+<button id="server-text">Servers</button>
+
+    <section id="server-category">
+        <select id="server">
+          <option id="Ny-server" class="server-list">NothAmerica</option>    
+          <option id="Asia-server" class="server-list">Asia</option>
+          <option id="Tokyo-server" class="server-list">Tokyo</option>
+          <option id="Europe-server" class="server-list">Europe</option>
+        </select>
+    </section>
+
+<!--The join game and create game buttons-->
+<button class="btn-success" id="nGameButton">Create New Game </button>
+<div id="code_container">
+<button type="submit" class="btn-success" id="newGameButton">create game</button>
+<h3 id="code">Your game code is: <div id="gameCodeDisplay"></div></h3>
+<h1 id="or">or</h1>
+<button type="submit" class="btn-success" id="joinGameButton">Join Game</button>
+<div id="outdiv"><input type="text" placeholder="enter game code" id="gameCodeInput"></div>
+</div> 
+
+    <!-- update explanation -->
+    <section id="update-container">
+      <div id="update-explain">
+        <h1 class="update-info">Player can now customize their controls</h1>
+        <h1 class="update-info">fixed jumping bug</h1>
+        <h1 class="update-info">Made chat scroll on new message</h1>
+        <h1 class="update-info">Working on players been able to make private games</h1>
+        <h1 class="update-info">Working on in game servers</h1>
+        <h1 class="update-info">working on new map</h1>
+        <h1 class="update-info">fixed bug with chat. *when typing*</h1>
+        <h1 class="update-info">working on timer being async</h1>
+        <h1 class="update-info">new guns coming soon</h1>
+      </div>
+    </section>
+
+<div id="loader-wrapper">
+      <span id="loader"><span id="loader-inner"></span></span>
+    </div>
+  
+    <!--The end game map display-->
+    <div id="map-container">
+      <div id="card-holder1" title="firefly">
+        <img src="image/akclass.jpg" />
+      </div>
+    </div>
+
+    <noscript
+      >Sorry, you can't view this page it is either blocked or your browser
+      doesn't support javascript</noscript
+    >
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/client.js"></script>
+    <script src="js/three.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/collisionDetection.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/shotgun.js"></script>
+    <script src="js/crates.js"></script>
+    <script src="js/Guicontrols.js"></script>
+    <script src="js/fence.js"></script>
+    <script src="js/hands.js"></script>
+    <script src="js/house.js"></script>
+    <script src="js/outsidewalls.js"></script>
+    <script src="js/scope.js"></script>
+    <!-- <script src="js/enemy.js"></script> -->
+    <script src="js/timer.js"></script>
+    <script src="js/weapon.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/stairs.js"></script>
+    <script src="js/stairs2.js"></script>
+    <script src="js/ladder.js"></script>
+   <!-- <script src="js/bulletcollision.js"></script> -->
+    <script src="js/roofcollision.js"></script>
+    <script src="js/webcam.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/ak.js"></script>
+    <script src="js/ammo.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/fireflymap.js"></script>
+    <script src="js/firefly.js"></script>
+    <script src="js/loadingscreen.js"></script>
+    <script src="js/update.js"></script>
+    <script src="js/join_creategame.js"></script>
+    <script src="js/rooms.js"></script>
+  </body>
+</html>
