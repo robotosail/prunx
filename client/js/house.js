@@ -1,6 +1,5 @@
 //"use strict";
 let  roof, roof1, roofpatch1, roofpatch2;
-
 let cube, cube1, cube3, cube4, inside_wall, cube11, cube12, cube33, cube44, inside_wall1;
 let front_topwall1, front_topleftwall1, front_toprightwall1, front_topbackwall1, insidewall11, insidewall12;
 let front_topwall2, front_topleftwall2, front_toprightwall2, front_topbackwall2, insidewall21, insidewall22;
@@ -16,97 +15,96 @@ const color2 = "green";
 	const houseTexture = new THREE.TextureLoader().load("image/wall.jpg");
 	
 		const Texture = new THREE.TextureLoader().load("image/wall2.jpg");
-			function house1(){
-			  //front wall
-			  const shape = new THREE.BoxGeometry(1,40,135);
-			  const material = new THREE.MeshPhongMaterial({color: color1, map:houseTexture});
-			   cube = new THREE.Mesh(shape, material);
-			  cube.receiveShadow = true;
-			  cube.castShadow = true;
-			  
-			  
-			  // right wall from the view of facing left
-			  const shape2 = new THREE.BoxGeometry(120,40,1);
-			 const material2 = new THREE.MeshPhongMaterial({color: color1, map:houseTexture});
-			   cube1 = new THREE.Mesh(shape2, material2);
-			  cube1.receiveShadow = true;
-			  cube1.castShadow = true;
-			  
-			  
-			  // left wall
-			    const shape3 = new THREE.BoxGeometry(120,40,1);
-			 const material3 = new THREE.MeshPhongMaterial({color: color1, map:houseTexture});
-			   cube3 = new THREE.Mesh(shape2, material2);
-			  cube3.receiveShadow = true;
-			  cube3.castShadow = true;
-			  
-			  
-			  //back wall
-			  const shape4 = new THREE.BoxGeometry(1, 40, 190);
-			  const material4 = new THREE.MeshPhongMaterial({color:  color1, map:houseTexture});
-			   cube4 = new THREE.Mesh(shape4, material4);
+		function house1(){
+			//front wall
+			const shape = new THREE.BoxGeometry(1,40,135);
+			const material = new THREE.MeshPhongMaterial({color: color1, map:houseTexture});
+			 cube = new THREE.Mesh(shape, material);
+			cube.receiveShadow = true;
+			cube.castShadow = true;
+			
+			
+			// right wall from the view of facing left
+			const shape2 = new THREE.BoxGeometry(120,40,1);
+		 const material2 = new THREE.MeshPhongMaterial({color: color1, map:houseTexture});
+			 cube1 = new THREE.Mesh(shape2, material2);
+			cube1.receiveShadow = true;
+			cube1.castShadow = true;
+			
+			
+			// left wall
+				const shape3 = new THREE.BoxGeometry(120,40,1);
+		 const material3 = new THREE.MeshPhongMaterial({color: color1, map:houseTexture});
+			 cube3 = new THREE.Mesh(shape2, material2);
+			cube3.receiveShadow = true;
+			cube3.castShadow = true;
+			
+			
+			//back wall
+			const shape4 = new THREE.BoxGeometry(1, 40, 190);
+			const material4 = new THREE.MeshPhongMaterial({color:  color1, map:houseTexture});
+			 cube4 = new THREE.Mesh(shape4, material4);
 
-			  
-			  
-			  //roof
-			  const roofGeometry = new THREE.BoxGeometry(138,1, 124.5);
-			  const roofColor = new THREE.MeshPhongMaterial({color: roofcolor2});
-			   roof = new THREE.Mesh(roofGeometry, roofColor);
-			  
-			   //the small roof patxh
-			   const roofpatchGeometry2 = new THREE.BoxGeometry(50,1, 56);
-			  const roofpatchColor2 = new THREE.MeshPhongMaterial({color: roofcolor2});
-			   roofpatch2 = new THREE.Mesh(roofpatchGeometry2, roofpatchColor2);
-			  
-			  
-			  // inside wall
-			  const shape5 = new THREE.BoxGeometry(90, 40, 1);
-			  const material5 = new THREE.MeshPhongMaterial({color:  color1, map: houseTexture});
-			   inside_wall = new THREE.Mesh(shape5, material5);
-			  
-			  //position
-			  
-			  // roof
-			  roof.position.y = -35;
-			  roof.position.z = -33;
-			  roof.position.x = -150;
-			  			  
-			  // roof patch
-			  roofpatch2.position.y = -35;
-			  roofpatch2.position.z = 56.5;
-			  roofpatch2.position.x = -90;
-			  
-			  //left wall
-			  cube3.position.y = -15;
-			  cube3.position.z = 85;
-			  cube3.position.x = -140;
-			  
-			  // right wall from the view of facing left
-			  cube1.position.y = -15;
-			  cube1.position.z = -95;
-			  cube1.position.x = -140;
-			  
-			  //front wall
-			  cube.position.y = -15;
-			  cube.position.z = 17;
-			  cube.position.x = -80.5;
+			
+			
+			//roof
+			const roofGeometry = new THREE.BoxGeometry(138,1, 124.5);
+			const roofColor = new THREE.MeshPhongMaterial({color: roofcolor2});
+			 roof = new THREE.Mesh(roofGeometry, roofColor);
+			
+			 //the small roof patxh
+			 const roofpatchGeometry2 = new THREE.BoxGeometry(50,1, 56);
+			const roofpatchColor2 = new THREE.MeshPhongMaterial({color: roofcolor2});
+			 roofpatch2 = new THREE.Mesh(roofpatchGeometry2, roofpatchColor2);
+			
+			
+			// inside wall
+			const shape5 = new THREE.BoxGeometry(90, 40, 1);
+			const material5 = new THREE.MeshPhongMaterial({color:  color1, map: houseTexture});
+			 inside_wall = new THREE.Mesh(shape5, material5);
+			
+			//position
+			
+			// roof
+			roof.position.y = -35;
+			roof.position.z = -33;
+			roof.position.x = -150;
+							
+			// roof patch
+			roofpatch2.position.y = -35;
+			roofpatch2.position.z = 56.5;
+			roofpatch2.position.x = -90;
+			
+			//left wall
+			cube3.position.y = -15;
+			cube3.position.z = 85;
+			cube3.position.x = -140;
+			
+			// right wall from the view of facing left
+			cube1.position.y = -15;
+			cube1.position.z = -95;
+			cube1.position.x = -140;
+			
+			//front wall
+			cube.position.y = -15;
+			cube.position.z = 17;
+			cube.position.x = -80.5;
 
-        // back wall
-        cube4.position.y = -15;
-        cube4.position.z = -2;
-        cube4.position.x = -200.5;
-			  
-			  //inside wall
-			  inside_wall.position.y = -15;
-			  inside_wall.position.z = 27;
-			  inside_wall.position.x = -155.5;
-			  
-			  
-        collideObject.push(cube, cube1, cube3, cube4, roof, inside_wall);
-			  scene.add(cube, cube1, cube3, cube4, roof, inside_wall, roofpatch2);
-			  
-			}
-			house1();
+			// back wall
+			cube4.position.y = -15;
+			cube4.position.z = -2;
+			cube4.position.x = -200.5;
+			
+			//inside wall
+			inside_wall.position.y = -15;
+			inside_wall.position.z = 27;
+			inside_wall.position.x = -155.5;
+			
+			
+			collideObject.push(cube, cube1, cube3, cube4, roof, inside_wall, roofpatch2);
+			scene.add(cube, cube1, cube3, cube4, roof, inside_wall, roofpatch2);
+		}
+		house1();
 			
 			function house2(){
 			  //front wall
@@ -134,7 +132,7 @@ const color2 = "green";
 			  
 			  
 			  //back wall
-			  const shape44 = new THREE.BoxGeometry(1, 40, 200);
+			  const shape44 = new THREE.BoxGeometry(1, 40, 20);
 			  const material44 = new THREE.MeshPhongMaterial({color: color2, map:houseTexture});
 			  cube44 = new THREE.Mesh(shape44, material44);
 			  
@@ -193,7 +191,7 @@ const color2 = "green";
 			  
 			  scene.add(cube12, cube11, roof1, cube33, inside_wall1, cube44, roofpatch1);
 			  
-			  collideObject.push(cube12, cube11, roof1, cube33, inside_wall1, cube44);
+			  collideObject.push(cube12, cube11, roof1, cube33, inside_wall1, cube44, roofpatch1);
 			}
 			house2();
 			
@@ -265,7 +263,7 @@ const color2 = "green";
   		  
   		  
   		  scene.add(front_topwall2, front_topleftwall2, front_toprightwall2, front_topbackwall2, insidewall11, insidewall12);
-				collideObject.push(front_topwall2, front_topleftwall2, front_toprightwall2, front_topbackwall2, insidewall11, insidewall12);
+			collideObject.push(front_topwall2, front_topleftwall2, front_toprightwall2, front_topbackwall2, insidewall11, insidewall12);
 			}
 			tophouse1();
   		  
@@ -384,42 +382,5 @@ const color2 = "green";
 			  scene.add(hut_frontwall, hut_roof, hut_roof2, hut_f);
 			  collideObject.push(hut_frontwall, hut_roof, hut_roof2, hut_f);
 			}hut();
-
-			function animatingIfThereIscollision() {
-				requestAnimationFrame(animatingIfThereIscollision);
-				//green.position.x--
-			
-				/* on un comment this for debugging document.getElementById("c").innerHTML =*/
-				// collision detection for the walls of the first house
-				checkTouching(player, cube);
-				checkTouching(player, cube1);
-				checkTouching(player, cube3);
-				checkTouching(player, cube4);
-				checkTouching(player, inside_wall);
-				
-				/*collision detection for the house on top of the first house*/
-				checkTouching(player, front_topwall1);
-				checkTouching(player, front_topleftwall1);
-				checkTouching(player, front_toprightwall1);
-				checkTouching(player, front_topbackwall1);
-				checkTouching(player, insidewall11);
-				checkTouching(player, insidewall12);
-				
-				/*collision detection for the second house*/
-				checkTouching(player, cube11);
-				checkTouching(player, cube12);
-				checkTouching(player, cube33);
-				checkTouching(player, cube44);
-				checkTouching(player, inside_wall1);
-					
-				/*collision detection for the house on top of the second house*/
-				checkTouching(player, front_topwall2);
-				checkTouching(player, front_topleftwall2);
-				checkTouching(player, front_toprightwall2);
-				checkTouching(player, front_topbackwall2);
-				checkTouching(player, insidewall21);
-				checkTouching(player, insidewall22);
-			}
-			animatingIfThereIscollision();
 
 		} house();

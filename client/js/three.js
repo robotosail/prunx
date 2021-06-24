@@ -1,4 +1,4 @@
-let scene, camera, controls, renderer, collideObject, floor;
+let scene, camera, controls, renderer, collideObject, floor, collision;
 
 collideObject = [];
 collideObject.receiveShadow = true;
@@ -35,6 +35,7 @@ function init() {
   light.shadow.camera.near = 0.1;
   light.shadow.camera.far = 25;
   scene.add(light);
+  collideObject.push(light);
 
   //the renderer
   renderer = new THREE.WebGLRenderer({ antialias:true});
@@ -128,17 +129,6 @@ function music(e) {
   }
 }
 // window.addEventListener("keydown", music);
-
-// mouse position
-window.addEventListener("mousemove", mouse);
-let mouseX = 0;
-let mouseY = 0;
-
-function mouse(e) {
-  //  console.log(mouseX, mouseY);
-  mouseX = e.clientX - window.innerWidth / 2;
-  mouseY = e.clientY - window.innerHeight / 2;
-}
 
 // the fps
 let fps = new Stats();

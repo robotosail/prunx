@@ -1,7 +1,7 @@
 *{
 margin: 0;
 padding: 0;
-box-sizing: boder-box;
+box-sizing: border-box;
 cursor:crosshair;
 font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     font-size: 1rem;
@@ -314,7 +314,7 @@ background-color:yellow;
 #countdown{
   background-color: blue;
   position:absolute;
-  /* display: none; */
+  display: none;
   align-items:center;
   justify-content:center;
   text-align: center;

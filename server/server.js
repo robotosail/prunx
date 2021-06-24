@@ -150,7 +150,7 @@ when user refreshes page
   //the timer mech
   let interval;
   let countdownTimer, remaingSeconds;
-const startingMinutes = 4;
+const startingMinutes = .1;
 let time = startingMinutes * 60;
 /* set the timer to count down for every sec*/
 interval = setInterval(counter, 1000);
@@ -167,7 +167,6 @@ function counter(){
   
   /* decreaseaing the timer*/
   time--;
-  console.log(time);
    /* if the timer is less than 0 it should stop*/
   if(time <= startingMinutes){
     clearInterval(interval);
@@ -181,7 +180,7 @@ function counter(){
   }
 }
 
-let seconds = 60;
+let seconds = 5;
 
 function displayMapTimer(){
   let minutes = Math.round((seconds - 30) / 60);
@@ -206,15 +205,8 @@ if(seconds <= 0){
   clearInterval(countdownTimer);
   io.emit("endBreakTimer");
   }
-
-    io.emit("changeMap");
 }
 
-io.on("newmap", function(){
-  clearInterval(countdownTimer);
-  seconds = 0;
-console.log("yes");
-})
 
 // when an error happens on the server
 server.on("error", (err) => {

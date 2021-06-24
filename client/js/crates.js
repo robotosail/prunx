@@ -15,6 +15,7 @@ function box() {
     crate.receiveShadow = true;
     crate.castShadow = true;
     scene.add(crate);
+    collideObject.push(crate);
   }
 }
 box();

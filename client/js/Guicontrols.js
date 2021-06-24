@@ -243,16 +243,19 @@ window.addEventListener("contextmenu", function (e) {
 });
 
 function uidisplayagain(e) {
+  //showing the ui when the timer is up
   // console.log(e.keyCode);
-  if (e.keyCode === 27 && time <= startingMinutes) {
+  if (e.keyCode === 27) {
     const ui = document.getElementById("Ui");
     const weapon_button = document.getElementById("weapon-button");
     const chat = document.getElementById("chat");
+    const btn = document.getElementById("button");
     const logo = document.getElementById("logo");
     chat.style.left = "11%";
     chat.style.height = "50%";
     chat.style.top = "52%";
 
+    btn.style.display = "block"
     logo.style.display = "block";
     ui.style.display = "block";
     weapon_button.style.display = "block";

@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "node-http-server",
   "version": "1.0.8",
   "description": "Node.js example server starter project",
   "main": "client/index.html",

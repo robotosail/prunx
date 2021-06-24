@@ -194,28 +194,5 @@ function rightside() {
   fence24();
 }
 rightside();
-
-function animatingIfThereIscollision1() {
-  requestAnimationFrame(animatingIfThereIscollision1);
-  //green.position.x--
-
-  /* on un comment this for debugging document.getElementById("c").innerHTML =*/
-  /*collision detection for the fence left fence*/
-  checkTouching(player, fence);
-  checkTouching(player, box1);
-  checkTouching(player, box2);
-  checkTouching(player, fence2);
-  checkTouching(player, fence3);
-  checkTouching(player, fence4);
-  
-    /*collision detection for the fence right fence*/
-  checkTouching(player, fence11);
-  checkTouching(player, box11);
-  checkTouching(player, box12);
-  checkTouching(player, fence25);
-  checkTouching(player, fence33);
-  checkTouching(player, fence44);
-}
-animatingIfThereIscollision1();
 }
 fences();

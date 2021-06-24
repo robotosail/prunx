@@ -37,8 +37,6 @@ sock.on("showBreakTimer", showBreakTimer);
 sock.on("updateBreakTimer", updateBreakTimer);
 //triggered on the end Break Timer event
 sock.on("endBreakTimer", endBreakTimer);
-//triggered on the change map event.
-sock.on("changeMap", loadNextMap);
 //showing the timer
 function showBreakTimer() {
   breakTimer.style.display = "block";
@@ -53,6 +51,7 @@ function updateBreakTimer(data) {
 function endBreakTimer() {
   breakTimer.style.display = "none";
   mapholder.style.display = "none";
+  loadNextMap();
   fireflymap.click();
 }
 
@@ -60,10 +59,8 @@ function endBreakTimer() {
 function loadNextMap() {
   //adding a click eventListener to the next map
   fireflymap.addEventListener("click", function () {
-    console.log("it worked");
     document.getElementById("button").style.display = "block";
     setTimeout(map2, 1000);
     mapholder.style.display = "none";
-    sock.emit("newmap");
   });
 }

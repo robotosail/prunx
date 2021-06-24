@@ -95,6 +95,7 @@ let addOtherPlayer = function (data) {
   otherPlayersId.push(data.playerId);
   otherPlayers.push(otherPlayer);
   scene.add(otherPlayer);
+  collideObject.push(otherPlayer);
 };
 
 let removeOtherPlayer = function (data) {
